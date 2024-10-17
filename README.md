@@ -18,3 +18,9 @@ CONTAINER ID   IMAGE         COMMAND              CREATED              STATUS   
 5047f80cfe75   httpd:2.4     "httpd-foreground"   About a minute ago   Created                           dam_web1
 ~~~
 
+### 3. Si quieres poder acceder desde el navegador de tu equipo, ¿que debes hacer?
+### Utiliza bind mount para que el directorio del apache2 'htdocs' esté montado un directorio que tu elijas.
+
+
+~~~
+~~~
