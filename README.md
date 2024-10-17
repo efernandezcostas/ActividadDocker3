@@ -46,5 +46,32 @@ Creo un archivo html en la carpeta creada anteriormente con <code>touch index.ht
 
 ### 6. Crea otro contenedor 'dam_web2' con el mismo bind mount y a otro puerto, por ejemplo 9080.
 
-Repito los pasos del punto 4:    
-<code>docker run --name dam_web2 -d -p 9080:80 -v /home/enrique/web:/usr/local/apache2/htdocs httpd:2.4</code>  
+Repito el comando del punto 4:    
+<code>docker run --name dam_web2 -d -p 9080:80 -v /home/enrique/web:/usr/local/apache2/htdocs httpd:2.4</code>
+
+### 7. Comprueba que los dos servidores 'sirven' la misma página, es decir, cuando consultamos en el navegador:
+
+Desde el puerto 8000 de dam_web1 funciona correctamente (imágen del puto 3).
+Desde el puerto 9080 de dam_web2 también funciona correctamente:   
+![image](https://github.com/user-attachments/assets/ab1fb04a-16e3-4e44-9903-7f257e64c16d)
+
+### 8. Realiza modificaciones de la página y comprueba que los dos servidores 'sirven' la misma página.
+
+Realizo un pequeño cambio en el index.html, añadiendo:
+~~~
+<h3>Wuola Mundo<h3>
+~~~
+Compruebo que cambia en ambas páginas:   
+
+|8000|9080|
+|----|----|
+|![8000](https://github.com/user-attachments/assets/7a0d5be9-086f-43db-b8e5-6f48bd4b844c)|![9080](https://github.com/user-attachments/assets/ddf8e246-fe69-4be9-a96a-ec42f2efedad)|
+
+
+
+
+
+
+
+
+
