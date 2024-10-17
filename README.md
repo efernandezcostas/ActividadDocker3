@@ -24,12 +24,27 @@ Como no puedo modificar el contenedor previamente, lo elimino con <code>docker r
 Creo un nuevo contenedor indiciando el puerto con <code>docker run --name dam_web1 -d -p 8000:80 httpd:2.4</code>
 - --name -> Para ponerle un nombre al contenedor
 - -d -> Para que se ejecute en segundo plano
-- -p -> Para indiciar el puerto
+- -p -> Para indiciar el puerto   
 
-![image](https://github.com/user-attachments/assets/db08b0fa-5540-4722-9343-87849dca4c78)
-
+![image](https://github.com/user-attachments/assets/db08b0fa-5540-4722-9343-87849dca4c78)   
+   
 
 ### 4. Utiliza bind mount para que el directorio del apache2 'htdocs' esté montado un directorio que tu elijas.
 
+Primero creo la carpeta en la que lo quiero montar con <code>mkdir /home/enrique/web</code>. 
 De nuevo, no puedo modificar el contenedor ya creado y la única forma que encontré de realizarlo es eliminar el creado previamente <code>docker rm dam_web1</code> y crearlo nuevamente con todos los parámetros que necesito:    
-<code>docker run --name dam_web1 -d -p 8000:80 -v /home/enrique/web:/usr/local/apache2/htdocs httpd:2.4</code>
+<code>docker run --name dam_web1 -d -p 8000:80 -v /home/enrique/web:/usr/local/apache2/htdocs httpd:2.4</code>   
+
+### 5. Realiza un 'hola mundo' en html y comprueba que accedes desde el navegador.
+
+Creo un archivo html en la carpeta creada anteriormente con <code>touch index.html</code> y lo edito con <code>nano index.html</code> añadiendo:   
+~~~
+<h1>Hola Mundo</h1>
+~~~
+
+![image](https://github.com/user-attachments/assets/ad57d099-875c-4dbb-92e0-a1faa1cf6258)   
+
+### 6. Crea otro contenedor 'dam_web2' con el mismo bind mount y a otro puerto, por ejemplo 9080.
+
+Repito los pasos del punto 4:    
+<code>docker run --name dam_web2 -d -p 9080:80 -v /home/enrique/web:/usr/local/apache2/htdocs httpd:2.4</code>  
