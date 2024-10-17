@@ -19,8 +19,17 @@ CONTAINER ID   IMAGE         COMMAND              CREATED              STATUS   
 ~~~
 
 ### 3. Si quieres poder acceder desde el navegador de tu equipo, ¿que debes hacer?
-### Utiliza bind mount para que el directorio del apache2 'htdocs' esté montado un directorio que tu elijas.
+
+Como no puedo modificar el contenedor previamente, lo elimino con <code>docker rm dam_web1</code>.
+Creo un nuevo contenedor indiciando el puerto con <code>docker run --name dam_web1 -d -p 8000:80 httpd:2.4</code>
+- --name -> Para ponerle un nombre al contenedor
+- -d -> Para que se ejecute en segundo plano
+- -p -> Para indiciar el puerto
+
+![image](https://github.com/user-attachments/assets/db08b0fa-5540-4722-9343-87849dca4c78)
 
 
-~~~
-~~~
+### 4. Utiliza bind mount para que el directorio del apache2 'htdocs' esté montado un directorio que tu elijas.
+
+De nuevo, no puedo modificar el contenedor ya creado y la única forma que encontré de realizarlo es eliminar el creado previamente <code>docker rm dam_web1</code> y crearlo nuevamente con todos los parámetros que necesito:    
+<code>docker run --name dam_web1 -d -p 8000:80 -v /home/enrique/web:/usr/local/apache2/htdocs httpd:2.4</code>
